@@ -26,6 +26,9 @@ const MapComponent = ({ depot, deliveryPoints, route, onMapClick }) => {
     return null;
   };
 
+  // Debug log to check route data
+  console.log("Route data in MapComponent:", route ? route.slice(0, 5) : "No route");
+
   return (
     <MapContainer
       center={depot || [51.505, -0.09]} // Center on depot if available
@@ -45,7 +48,17 @@ const MapComponent = ({ depot, deliveryPoints, route, onMapClick }) => {
       ))}
       {/* Route as a Red Polyline */}
       {route && route.length > 1 && (
-        <Polyline positions={route} color="red" weight={4} />
+        <Polyline 
+          positions={route} 
+          color="red" 
+          weight={4} 
+          // Add useful logging when the polyline is clicked
+          eventHandlers={{
+            click: () => {
+              console.log("Route polyline clicked. Route points:", route.length);
+            }
+          }}
+        />
       )}
     </MapContainer>
   );

@@ -7,6 +7,8 @@ import DeliveryPointsInput from "./components/DeliveryPointsInput";
 import OptimalRoutePage from "./components/OptimalRoutePage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
+import 'leaflet/dist/leaflet.css';
+
 
 const App = () => {
   const [depot, setDepot] = useState(null);
